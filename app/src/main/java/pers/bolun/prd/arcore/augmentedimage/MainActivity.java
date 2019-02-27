@@ -64,14 +64,16 @@ public class MainActivity extends AppCompatActivity {
         Collection<AugmentedImage> augmentedImages = frame.getUpdatedTrackables(AugmentedImage.class);
         for (AugmentedImage augmentedImage : augmentedImages) {
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING) {
-                if (augmentedImage.getName().equals("tiger") && shouldAddModel) {
-                    placeObject(arFragment, augmentedImage.createAnchor(augmentedImage.getCenterPose()), Uri.parse("Mesh_BengalTiger.sfb"));
+                if (augmentedImage.getName().equals("model") && shouldAddModel) {
+                    placeObject(arFragment, augmentedImage.createAnchor(augmentedImage.getCenterPose()), Uri.parse("andy.sfb"));
                     shouldAddModel = false;
                 }
             }
         }
     }
 
+
+    //setup new database by code
     public boolean setupAugmentedImagesDb(Config config, Session session) {
         AugmentedImageDatabase augmentedImageDatabase;
         Bitmap bitmap = loadAugmentedImage();
@@ -80,13 +82,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         augmentedImageDatabase = new AugmentedImageDatabase(session);
-        augmentedImageDatabase.addImage("tiger", bitmap);
+        augmentedImageDatabase.addImage("model", bitmap);
         config.setAugmentedImageDatabase(augmentedImageDatabase);
         return true;
     }
 
     private Bitmap loadAugmentedImage() {
-        try (InputStream is = getAssets().open("blanket.jpeg")) {
+        try (InputStream is = getAssets().open("1.jpg")) {
             return BitmapFactory.decodeStream(is);
         } catch (IOException e) {
             Log.e("ImageLoad", "IO Exception", e);
