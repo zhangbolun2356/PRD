@@ -17,7 +17,7 @@
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.google.ar.sceneform.samples.augmentedimage"
+        applicationId "pers.bolun.prd.arcore.augmentedimage"
 
         // Sceneform requires minSdkVersion >= 24.
         minSdkVersion 24
