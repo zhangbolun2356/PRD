@@ -81,3 +81,23 @@ sceneform.asset('sampledata/models/andy.obj',
         'default',
         'sampledata/models/andy.sfa',
         'src/main/assets/andy')
+
+sceneform.asset('sampledata/models/diamond.obj',
+        'default',
+        'sampledata/models/diamond.sfa',
+        'src/main/assets/diamond')
+
+sceneform.asset('sampledata/models/pumpkin.obj',
+        'default',
+        'sampledata/models/pumpkin.sfa',
+        'src/main/assets/pumpkin')
+
+sceneform.asset('sampledata/models/teapot.obj',
+        'default',
+        'sampledata/models/teapot.sfa',
+        'src/main/assets/teapot')
+
+sceneform.asset('sampledata/models/woman.obj',
+        'default',
+        'sampledata/models/woman.sfa',
+        'src/main/assets/woman')

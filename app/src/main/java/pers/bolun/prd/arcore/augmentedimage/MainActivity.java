@@ -65,7 +65,11 @@ public class MainActivity extends AppCompatActivity {
             if (augmentedImage.getTrackingState() == TrackingState.TRACKING) {
                 if (augmentedImage.getName().equals("model") && shouldAddModel) {
                     placeObject(arFragment, augmentedImage.createAnchor(augmentedImage.getCenterPose()), Uri.parse("andy.sfb"));
-                    shouldAddModel = false;
+                    shouldAddModel = true;
+                }
+                if (augmentedImage.getName().equals("model2") && shouldAddModel) {
+                    placeObject(arFragment, augmentedImage.createAnchor(augmentedImage.getCenterPose()), Uri.parse("woman.sfb"));
+                    shouldAddModel = true;
                 }
             }
         }
@@ -75,24 +79,31 @@ public class MainActivity extends AppCompatActivity {
     //setup new database by code
     public boolean setupAugmentedImagesDb(Config config, Session session) {
         AugmentedImageDatabase augmentedImageDatabase;
-        Bitmap bitmap = loadAugmentedImage();
-        if (bitmap == null) {
-            return false;
-        }
-
         augmentedImageDatabase = new AugmentedImageDatabase(session);
-        augmentedImageDatabase.addImage("model", bitmap);
+        String name;
+       for(int i = 1; i<11;i++){
+            Bitmap bitmap = loadAugmentedImage(i);
+            if (bitmap == null) {
+                return false;
+            }
+            if(i<6){
+                augmentedImageDatabase.addImage("model", bitmap);
+            }
+            if(i>=6){
+                augmentedImageDatabase.addImage("model2", bitmap);
+            }
+        }
         config.setAugmentedImageDatabase(augmentedImageDatabase);
         return true;
     }
 
-    private Bitmap loadAugmentedImage() {
-        try (InputStream is = getAssets().open("1.jpg")) {
+    private Bitmap loadAugmentedImage(int i) {
+        String fileName = i + ".jpg";
+        try (InputStream is = getAssets().open(fileName)) {
             return BitmapFactory.decodeStream(is);
         } catch (IOException e) {
             Log.e("ImageLoad", "IO Exception", e);
         }
-
         return null;
     }
 
