@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.ar.sceneform.activity.common.helpers;
+package pers.bolun.ar.sceneform.activity.common.helpers;
 
 import android.app.Activity;
 import android.support.design.widget.BaseTransientBottomBar;

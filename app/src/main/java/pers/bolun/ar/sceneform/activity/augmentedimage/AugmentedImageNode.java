@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.ar.sceneform.activity.augmentedimage;
+package pers.bolun.ar.sceneform.activity.augmentedimage;
 
 import android.content.Context;
 import android.net.Uri;
